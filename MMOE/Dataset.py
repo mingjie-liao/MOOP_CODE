@@ -44,7 +44,7 @@ class DnnDataset(Dataset):
         # return data[idx], lables[idx].unsqueeze(-1) # lr
         return data[idx], labels[idx].unsqueeze(-1)
 
-class MoEDataset(Dataset):
+class MMoEDataset(Dataset):
     """
         selected features of stroke risk study
     """
