@@ -1,7 +1,8 @@
-# *gitignore
+*gitignore
 *.DS_Store
 *__pycache__
 *vscode/
+benchmark/
 *.csv
 *.data
 *.test

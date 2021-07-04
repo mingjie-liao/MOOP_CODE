@@ -66,7 +66,7 @@ class MMoEDataset(Dataset):
             data = scaler.transform(data)
         self.data = torch.tensor(data).float()
         self.labels = torch.tensor(labels).float()
-        self.aux_labels = torch.tensor(aux_labels)
+        self.aux_labels = torch.tensor(aux_labels).float()
 
     def __len__(self):
         return len(self.dataframe)
@@ -80,3 +80,4 @@ class MMoEDataset(Dataset):
         aux_labels = self.aux_labels
         # return data[idx], lables[idx].unsqueeze(-1) # lr
         return data[idx], labels[idx].unsqueeze(-1), aux_labels[idx].unsqueeze(-1)
+        # return data[idx], labels[idx], aux_labels[idx]
