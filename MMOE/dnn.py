@@ -161,7 +161,7 @@ if __name__ == '__main__':
     opt = optim.Adam(model.parameters(), lr=lr,)
     scheduler = ExponentialLR(opt, gamma=0.9)
 
-    patience = 20	# 当验证集损失在连续20次训练周期中都没有得到降低时，停止模型训练，以防止模型过拟合
+    patience = 10	# 当验证集损失在连续20次训练周期中都没有得到降低时，停止模型训练，以防止模型过拟合
     early_stopping = EarlyStopping(patience, verbose=False)
 
     fit(epochs, model, loss_func, opt, scheduler, train_dl, valid_dl, valid_ds, early_stopping)

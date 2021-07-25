@@ -141,7 +141,7 @@ if __name__ == '__main__':
         train_file = '.\\data\\marital-status-train.csv'
         valid_file = '.\\data\\marital-status-valid.csv'
         test_file = '.\\data\\marital-status-tests.csv'
-    lr = 0.0001
+    lr = 0.001
     bs = 100
     epochs = 400
 
@@ -170,10 +170,13 @@ if __name__ == '__main__':
     y_s_prob, y_r_prob = model(test_ds.data)
     y_s_prob = y_s_prob.squeeze().tolist()
     y_s_pred = np.array([0 if y_s_prob[i] < 0.5 else 1 for i in range(len(y_s_prob))])
-    y_r_pred = np.argmax(y_r_prob.tolist(), axis=1)
-    y_r_test = test_ds.labels.tolist()
-    y_s_test = test_ds.aux_labels.tolist()
+    y_r_prob = y_r_prob.squeeze().tolist()
+    y_r_pred = np.array([0 if y_r_prob[i] < 0.5 else 1 for i in range(len(y_r_prob))])
+    # y_r_pred = np.argmax(y_r_prob.tolist(), axis=1)
+    y_s_test = test_ds.labels.tolist()
+    y_r_test = test_ds.aux_labels.tolist()
     sreport = classification_report(y_s_test, y_s_pred, digits=4)
     print(sreport)
     rreport = classification_report(y_r_test, y_r_pred, digits=4)
     print(rreport)
+
